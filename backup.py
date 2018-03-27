@@ -100,10 +100,7 @@ class CSRS(RS):
         ret = backupcontrol.find_one({ "_id" : "BackupControlDocument"})
         cnt_now = ret.get('counter') if ret else 0
 
-        if cnt_new == cnt_now and cnt_new != 0:
-            return True
-        else:
-            return False
+        return cnt_new == cnt_now and cnt_new != 0:
 
     def lock_secondary(self):
         verified = self.configrs_backupcontrol_verify()
